@@ -1,10 +1,8 @@
 const error = document.getElementById("error");
 const visualization = document.getElementById("visualization");
-const cont = document.getElementById("viscontainer");
+const canvas = document.getElementById("canvas");
 const calculation = document.getElementById("calculation");
 const form = document.getElementById("inputForm");
-
-const CONT_WIDTH = 900;
 
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
@@ -49,13 +47,56 @@ document.addEventListener("DOMContentLoaded", () => {
     calculation.classList.add("show");
     visualization.classList.add("show");
 
-    document.getElementById("roomHeight").innerHTML = body.roomHeightM2;
-    document.getElementById("roomWidth").innerHTML = body.roomWidthM2;
-    document.getElementById("roomArea").innerHTML = body.roomArea;
-    document.getElementById("tileArea").innerHTML = body.tileArea;
+    document.getElementById("roomHeight").innerHTML =
+      body.roomHeightM2.toFixed(4);
+    document.getElementById("roomWidth").innerHTML =
+      body.roomWidthM2.toFixed(4);
+    document.getElementById("roomArea").innerHTML = body.roomArea.toFixed(4);
+    document.getElementById("tileArea").innerHTML = body.tileArea.toFixed(4);
     document.getElementById("intactTiles").innerHTML = body.intactTiles;
     document.getElementById("tilesPlus10Percent").innerHTML = Math.ceil(
       body.intactTiles * 1.1
     );
+
+    renderCanvas(body);
   });
 });
+
+const renderCanvas = (body) => {
+  const ctx = canvas.getContext("2d");
+  canvas.width = body.roomWidth;
+  canvas.height = body.roomHeight;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < body.tilesAlongWidth; i++) {
+    for (let j = 0; j < body.tilesAlongHeight; j++) {
+      ctx.fillStyle = "#3498db";
+      ctx.fillRect(
+        i * body.tileWidth,
+        j * body.tileHeight,
+        body.tileWidth,
+        body.tileHeight
+      );
+    }
+  }
+
+  if (body.unusedWidth > 0) {
+    ctx.fillStyle = "#e74c3c";
+    ctx.fillRect(
+      body.tilesAlongWidth * body.tileWidth,
+      0,
+      body.unusedWidth,
+      body.roomHeight
+    );
+  }
+  if (body.unusedHeight > 0) {
+    ctx.fillStyle = "#e74c3c";
+    ctx.fillRect(
+      0,
+      body.tilesAlongHeight * body.tileHeight,
+      body.roomWidth,
+      body.unusedHeight
+    );
+  }
+};
