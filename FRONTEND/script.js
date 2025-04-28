@@ -1,13 +1,18 @@
 const error = document.getElementById("error");
-const loadingOverlay = document.getElementById("loading-overlay");
+const visualization = document.getElementById("visualization");
+const cont = document.getElementById("viscontainer");
+const calculation = document.getElementById("calculation");
 const form = document.getElementById("inputForm");
-let isLoading = false;
+
+const CONT_WIDTH = 900;
 
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     error.innerHTML = "";
     error.classList.remove("show");
+    visualization.classList.remove("show");
+    calculation.classList.remove("show");
 
     const roomWidth = Number(document.getElementById("inputWidth").value);
     const roomHeight = Number(document.getElementById("inputHeight").value);
@@ -34,10 +39,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (response.status != 200) {
       error.innerHTML = "Hiba történt a kommunikáció során!";
+      console.error("Hiba");
       return;
     }
 
     const body = await response.json();
     console.log(body);
+
+    calculation.classList.add("show");
+    visualization.classList.add("show");
+
+    document.getElementById("roomHeight").innerHTML = body.roomHeightM2;
+    document.getElementById("roomWidth").innerHTML = body.roomWidthM2;
+    document.getElementById("roomArea").innerHTML = body.roomArea;
+    document.getElementById("tileArea").innerHTML = body.tileArea;
+    document.getElementById("intactTiles").innerHTML = body.intactTiles;
+    document.getElementById("tilesPlus10Percent").innerHTML = Math.ceil(
+      body.intactTiles * 1.1
+    );
   });
 });

@@ -45,19 +45,37 @@
       <button id="submitBtn">Küldés</button>
     </form>
 
-    <!-- Calculation result box -->
     <div id="calculation">
       <h3>Számítási Eredmény:</h3>
       <div class="container">
-        <div></div>
-        <div></div>
+        <div>
+          <div class="parameter">
+            Szoba magassága: <span id="roomHeight"></span> m
+          </div>
+          <div class="parameter">
+            Szoba területe: <span id="roomArea"></span> m2
+          </div>
+          <div class="parameter">
+            Szükséges csempék: <span id="intactTiles"></span> db
+          </div>
+        </div>
+        <div>
+          <div class="parameter">
+            Szoba szélessége: <span id="roomWidth"></span> m
+          </div>
+          <div class="parameter">
+            Csempe területe: <span id="tileArea"></span> m2
+          </div>
+          <div class="parameter">
+            Szükséges csempék (+10%): <span id="tilesPlus10Percent"></span> db
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Visualization result box -->
     <div id="visualization">
       <h3>Vizualizáció:</h3>
-      <p>Itt jelenik meg a járólap elhelyezése.</p>
+      <div id="viscontainer"></div>
     </div>
   </body>
 </html>
