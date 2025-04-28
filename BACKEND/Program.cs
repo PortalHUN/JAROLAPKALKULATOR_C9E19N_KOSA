@@ -5,15 +5,18 @@ namespace BACKEND
     public static void Main(string[] args)
     {
       var builder = WebApplication.CreateBuilder(args);
-      builder.Services.AddControllersWithViews();
+      builder.Services.AddControllers();
+
+      builder.Services.AddEndpointsApiExplorer();
+      builder.Services.AddSwaggerGen();
 
       var app = builder.Build();
-      app.UseRouting();
-      app.MapControllerRoute(
-      name: "default",
-      pattern: "{controller}/{action}"
-      );
 
+      app.UseSwagger();
+      app.UseSwaggerUI();
+
+      app.UseRouting();
+      app.MapControllers();
 
       app.Run();
     }
