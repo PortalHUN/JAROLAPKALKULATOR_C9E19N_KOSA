@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     error.innerHTML = "";
     error.classList.remove("show");
-    loadingOverlay.style.display = "flex";
 
     const roomWidth = Number(document.getElementById("inputWidth").value);
     const roomHeight = Number(document.getElementById("inputHeight").value);
@@ -26,12 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const tileHeight = Number(tile[1]);
 
     const response = await fetch("http://localhost:5078/calculate", {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify({ tileWidth, tileHeight, roomHeight, roomWidth }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    console.log(response);
 
-    setTimeout(() => {
-      loadingOverlay.style.display = "none";
-    }, 1000);
+    if (response.status != 200) {
+      error.innerHTML = "Hiba történt a kommunikáció során!";
+      return;
+    }
+
+    const body = await response.json();
+    console.log(body);
   });
 });
