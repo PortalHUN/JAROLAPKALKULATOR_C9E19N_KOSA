@@ -1,4 +1,3 @@
-/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,19 +5,17 @@
   font-family: "Arial", sans-serif;
 }
 
-/* Basic body styling */
 body {
   background-color: #f4f4f4;
   font-family: "Arial", sans-serif;
   color: #333;
   display: flex;
-  justify-content: flex-start; /* Align items to the left (horizontal centering won't affect vertical) */
+  justify-content: flex-start;
   flex-direction: column;
   padding: 20px;
   margin: 0;
 }
 
-/* Centering the form horizontally */
 #inputForm {
   background-color: #fff;
   padding: 20px;
@@ -31,7 +28,6 @@ body {
   margin-right: auto;
 }
 
-/* Form title */
 h2 {
   font-size: 1.5rem;
   color: #333;
@@ -39,7 +35,6 @@ h2 {
   text-align: center;
 }
 
-/* Input groups and spacing */
 .inputGroup {
   margin-bottom: 20px;
 }
@@ -51,7 +46,6 @@ label {
   margin-bottom: 5px;
 }
 
-/* Input field styling */
 input[type="number"],
 select {
   width: 100%;
@@ -71,7 +65,6 @@ select:focus {
   outline: none;
 }
 
-/* Button styling */
 button {
   background-color: #0066cc;
   color: white;
@@ -89,15 +82,14 @@ button:hover {
   background-color: #005bb5;
 }
 
-/* Add a subtle hover effect to input fields */
 input[type="number"]:hover,
 select:hover {
   border-color: #0077e1;
 }
 
-/* Layout for the calculation and visualization boxes */
 #calculation,
-#visualization {
+#visualization,
+#error {
   background-color: #fff;
   padding: 20px;
   width: 100%;
@@ -120,29 +112,56 @@ select:hover {
   max-width: 900px;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-  #inputForm {
-    padding: 15px;
-  }
+#error {
+  display: none;
+  background-color: #f8d7da;
+  border-left: 5px solid #fa3e51;
+  max-width: 500px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-  h2 {
-    font-size: 1.3rem;
-  }
+#error.show {
+  display: block;
+}
 
-  input[type="number"],
-  select {
-    font-size: 0.95rem;
-  }
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the overlay is on top of everything else */
+}
 
-  button {
-    padding: 10px 15px;
-    font-size: 1rem;
-  }
+#loading-overlay .spinner {
+  border: 8px solid #f3f3f3; /* Light background */
+  border-top: 8px solid #3498db; /* Blue spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite; /* Spinner animation */
+}
 
-  #calculation,
-  #visualization {
-    width: 100%;
-    padding: 15px;
+#loading-overlay p {
+  font-size: 18px;
+  color: white;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

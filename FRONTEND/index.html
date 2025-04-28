@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🧱 Járólap kalkulátor</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <div id="loading-overlay">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <div id="error"></div>
     <form id="inputForm">
       <div class="inputGroup">
         <h2>Szoba paraméterek</h2>
@@ -15,32 +22,32 @@
           type="number"
           name="inputWidth"
           id="inputWidth"
-          placeholder="Szélesség"
+          placeholder="Szélesség (cm)"
         />
         <label for="inputHeight">Szoba magassága</label>
         <input
           type="number"
           name="inputHeight"
           id="inputHeight"
-          placeholder="Magasság"
+          placeholder="Magasság (cm)"
         />
       </div>
 
       <div>
         <h2>Járólap paraméterek</h2>
         <select id="tileInput">
-          <option value="10x10">10x10</option>
-          <option value="15x15">15x15</option>
-          <option value="10x30">10x30</option>
-          <option value="30x30">30x30</option>
-          <option value="30x60">30x60</option>
-          <option value="60x60">60x60</option>
-          <option value="45x90">45x90</option>
-          <option value="90x90">90x90</option>
+          <option value="10x10">10 cm x 10 cm</option>
+          <option value="15x15">15 cm x 15 cm</option>
+          <option value="10x30">10 cm x 30 cm</option>
+          <option value="30x30">30 cm x 30 cm</option>
+          <option value="30x60">30 cm x 60 cm</option>
+          <option value="60x60">60 cm x 60 cm</option>
+          <option value="45x90">45 cm x 90 cm</option>
+          <option value="90x90">90 cm x 90 cm</option>
         </select>
       </div>
 
-      <button type="submit">Küldés</button>
+      <button id="submitBtn">Küldés</button>
     </form>
 
     <!-- Calculation result box -->

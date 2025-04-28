@@ -18,5 +18,10 @@ namespace BACKEND.Controller
       if (Horizontal.totalUnusedArea < Vertical.totalUnusedArea) return Ok(Horizontal);
       else return Ok(Vertical);
     }
+
+    [HttpGet]
+    public IActionResult Get(){
+      return Ok("OK");
+    }
   }
 }
