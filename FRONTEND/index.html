@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🧱 Járólap kalkulátor</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <form id="inputForm">
@@ -38,9 +39,20 @@
           <option value="90x90">90x90</option>
         </select>
       </div>
+
+      <button type="submit">Küldés</button>
     </form>
 
-    <div id="calculation"></div>
-    <div id="visualization"></div>
+    <!-- Calculation result box -->
+    <div id="calculation">
+      <h3>Számítási Eredmény:</h3>
+      <p>Itt jelennek meg a számítások.</p>
+    </div>
+
+    <!-- Visualization result box -->
+    <div id="visualization">
+      <h3>Vizualizáció:</h3>
+      <p>Itt jelenik meg a járólap elhelyezése.</p>
+    </div>
   </body>
 </html>
