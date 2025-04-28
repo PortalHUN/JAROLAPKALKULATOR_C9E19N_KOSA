@@ -19,12 +19,11 @@
     public double tileArea => tileWidthM2 * tileHeightM2;
     public double tilesAlongWidth => (roomWidth / tileWidth);
     public double tilesAlongHeight => (roomHeight / tileHeight);
-    public double totalTiles => tilesAlongHeight * tilesAlongWidth;
+    public double intactTiles => tilesAlongHeight * tilesAlongWidth;
     public double unusedWidth => roomWidthM2%tileWidthM2;
     public double unusedHeight => roomHeightM2%tileHeightM2;
     public double unusedWidthArea => unusedWidth * roomWidthM2;
     public double unusedHeightArea => unusedHeight * roomHeightM2;
     public double totalUnusedArea => unusedWidthArea + unusedHeightArea;
-
   }
 }
