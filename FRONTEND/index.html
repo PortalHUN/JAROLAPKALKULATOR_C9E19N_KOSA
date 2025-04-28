@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🧱 Járólap kalkulátor</title>
+  </head>
+  <body>
+    <form id="inputForm">
+      <div class="inputGroup">
+        <h2>Szoba paraméterek</h2>
+        <label for="inputWidth">Szoba szélessége</label>
+        <input
+          type="number"
+          name="inputWidth"
+          id="inputWidth"
+          placeholder="Szélesség"
+        />
+        <label for="inputHeight">Szoba magassága</label>
+        <input
+          type="number"
+          name="inputHeight"
+          id="inputHeight"
+          placeholder="Magasság"
+        />
+      </div>
+
+      <div>
+        <h2>Járólap paraméterek</h2>
+        <select id="tileInput">
+          <option value="10x10">10x10</option>
+          <option value="15x15">15x15</option>
+          <option value="10x30">10x30</option>
+          <option value="30x30">30x30</option>
+          <option value="30x60">30x60</option>
+          <option value="60x60">60x60</option>
+          <option value="45x90">45x90</option>
+          <option value="90x90">90x90</option>
+        </select>
+      </div>
+    </form>
+
+    <div id="calculation"></div>
+    <div id="visualization"></div>
+  </body>
+</html>
