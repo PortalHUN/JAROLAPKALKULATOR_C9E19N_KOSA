@@ -71,7 +71,7 @@ const render = (body) => {
   const horizontalTileWidth = tableWidth / body.tilesAlongWidth;
   const scaleTileHeight = body.horizontalTile
     ? body.tileHeight / body.tileWidth
-    : body.tileWidth / body.tileHeight + 1;
+    : (body.tileWidth / body.tileHeight) * 10;
   const calculatedHeight = horizontalTileWidth * scaleTileHeight;
   console.log(body.horizontalTile);
   console.log(body.tileHeight / body.tileWidth);
