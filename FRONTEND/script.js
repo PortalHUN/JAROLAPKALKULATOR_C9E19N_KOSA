@@ -59,10 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("tilesPlus10Percent").innerHTML = Math.ceil(
       body.intactTiles * 1.2
     );
-    document.getElementById("horizontalUnused").innerHTML =
-      body.roomWidth % body.tileWidth;
-    document.getElementById("verticalUnused").innerHTML =
-      body.roomHeight % body.tileHeight;
+    document.getElementById("horizontalUnused").innerHTML = body.unusedWidth;
+    document.getElementById("verticalUnused").innerHTML = body.unusedHeight;
 
     render(body);
   });
@@ -77,11 +75,6 @@ const render = (body) => {
     ? body.tileHeight / body.tileWidth
     : (body.tileWidth / body.tileHeight) * 10;
   const calculatedHeight = horizontalTileWidth * scaleTileHeight;
-  console.log(horizontalTileWidth);
-  console.log(horizontalTileWidth * scaleTileHeight);
-  console.log(calculatedHeight);
-  console.log(body.tileHeight / body.tileWidth);
-  console.log(body.tileWidth / body.tileHeight + 1);
 
   for (let index = 0; index < body.tilesAlongHeight; index++) {
     const tr = document.createElement("tr");

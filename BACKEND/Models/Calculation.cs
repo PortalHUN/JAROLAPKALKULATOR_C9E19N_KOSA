@@ -8,22 +8,22 @@
     public double tileWidth { get; set; }
     public double tileHeight { get; set; }
 
-    //Conversion
-    public double roomWidthM2 => roomWidth / 100;
-    public double roomHeightM2 => roomHeight / 100;
-    public double tileWidthM2 => tileWidth / 100;
-    public double tileHeightM2 => tileHeight / 100;
+    //Conversion To Meter
+    public double roomWidthM => roomWidth / 100;
+    public double roomHeightM => roomHeight / 100;
+    public double tileWidthM => tileWidth / 100;
+    public double tileHeightM => tileHeight / 100;
 
     //Calculations
-    public double roomArea => roomWidthM2 * roomHeightM2;
-    public double tileArea => tileWidthM2 * tileHeightM2;
+    public double roomArea => roomWidthM * roomHeightM;
+    public double tileArea => tileWidthM * tileHeightM;
     public double tilesAlongWidth => (roomWidth / tileWidth);
     public double tilesAlongHeight => (roomHeight / tileHeight);
     public double intactTiles => tilesAlongHeight * tilesAlongWidth;
-    public double unusedWidth => roomWidthM2%tileWidthM2;
-    public double unusedHeight => roomHeightM2%tileHeightM2;
-    public double unusedWidthArea => unusedWidth * roomWidthM2;
-    public double unusedHeightArea => unusedHeight * roomHeightM2;
+    public double unusedWidth => roomWidthM%tileWidthM;
+    public double unusedHeight => roomHeightM%tileHeightM;
+    public double unusedWidthArea => unusedWidth * roomWidthM;
+    public double unusedHeightArea => unusedHeight * roomHeightM;
     public double totalUnusedArea => unusedWidthArea + unusedHeightArea;
 
     //Ratio
