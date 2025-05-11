@@ -108,7 +108,7 @@ select:hover {
 
 #visualization {
   display: none;
-  margin: 10px;
+  margin: 10px auto;
   padding: 0;
   background-color: #e8ffe8;
   border: 1px solid red;

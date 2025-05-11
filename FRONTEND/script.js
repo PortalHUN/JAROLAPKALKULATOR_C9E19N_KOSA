@@ -3,7 +3,7 @@ const visualization = document.getElementById("visualization");
 const calculation = document.getElementById("calculation");
 const form = document.getElementById("inputForm");
 
-const TABLEWIDTHINVH = 90;
+const TABLEWIDTHINVH = 95;
 
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
@@ -79,18 +79,22 @@ const render = (body) => {
     for (let i2 = 0; i2 < body.tilesAlongWidth; i2++) {
       const td = document.createElement("td");
       td.style.border = "1px solid black";
+      td.style.width = horizontalTileWidth + "px";
+      td.style.height = calculatedHeight + "px";
       if (body.tilesAlongHeight - index < 1) {
         td.style.border = "1px solid red";
+        const height = calculatedHeight * (body.tilesAlongHeight - index);
+        console.log(height);
+        td.style.height = height + "px";
       }
       if (body.tilesAlongWidth - i2 < 1) {
         td.style.border = "1px solid orange";
+        const width = horizontalTileWidth * (body.tilesAlongWidth - i2);
+        console.log(width);
+        td.style.width = width + "px";
       }
       td.style.boxSizing = "border-box";
-      console.log(horizontalTileWidth);
-      console.log(calculatedHeight);
 
-      td.style.width = horizontalTileWidth + "px";
-      td.style.height = calculatedHeight + "px";
       tr.appendChild(td);
     }
     visualization.appendChild(tr);
