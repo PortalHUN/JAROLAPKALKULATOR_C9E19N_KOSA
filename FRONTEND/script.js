@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
       body.roomWidthM2.toFixed(4);
     document.getElementById("roomArea").innerHTML = body.roomArea.toFixed(4);
     document.getElementById("tileArea").innerHTML = body.tileArea.toFixed(4);
-    document.getElementById("intactTiles").innerHTML = body.intactTiles;
+    document.getElementById("intactTiles").innerHTML =
+      body.intactTiles.toFixed(4);
     document.getElementById("tilesPlus10Percent").innerHTML = Math.ceil(
       body.intactTiles * 1.1
     );
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const render = (body) => {
+  visualization.innerHTML = "";
   const tableWidth = vhToPixel(TABLEWIDTHINVH);
   visualization.style.width = tableWidth + "px";
   const horizontalTileWidth = tableWidth / body.tilesAlongWidth;
@@ -71,26 +73,22 @@ const render = (body) => {
     ? body.tilesAlongWidth / body.tilesAlongHeight
     : body.tilesAlongHeight / body.tilesAlongWidth;
   const calculatedHeight = horizontalTileWidth * scaleTileHeight;
-  console.log(horizontalTileWidth);
-  console.log(scaleTileHeight);
 
   for (let index = 0; index < body.tilesAlongHeight; index++) {
     const tr = document.createElement("tr");
     for (let i2 = 0; i2 < body.tilesAlongWidth; i2++) {
       const td = document.createElement("td");
-      td.style.border = "1px solid black";
+      td.style.background = "royalblue";
       td.style.width = horizontalTileWidth + "px";
       td.style.height = calculatedHeight + "px";
       if (body.tilesAlongHeight - index < 1) {
-        td.style.border = "1px solid red";
+        td.style.background = "red";
         const height = calculatedHeight * (body.tilesAlongHeight - index);
-        console.log(height);
         td.style.height = height + "px";
       }
       if (body.tilesAlongWidth - i2 < 1) {
-        td.style.border = "1px solid orange";
+        td.style.background = "orange";
         const width = horizontalTileWidth * (body.tilesAlongWidth - i2);
-        console.log(width);
         td.style.width = width + "px";
       }
       td.style.boxSizing = "border-box";
