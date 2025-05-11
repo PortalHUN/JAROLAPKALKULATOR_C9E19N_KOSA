@@ -70,9 +70,12 @@ const render = (body) => {
   visualization.style.width = tableWidth + "px";
   const horizontalTileWidth = tableWidth / body.tilesAlongWidth;
   const scaleTileHeight = body.horizontalTile
-    ? body.tilesAlongWidth / body.tilesAlongHeight
-    : body.tilesAlongHeight / body.tilesAlongWidth;
+    ? body.tileHeight / body.tileWidth
+    : body.tileWidth / body.tileHeight + 1;
   const calculatedHeight = horizontalTileWidth * scaleTileHeight;
+  console.log(body.horizontalTile);
+  console.log(body.tileHeight / body.tileWidth);
+  console.log(body.tileWidth / body.tileHeight + 1);
 
   for (let index = 0; index < body.tilesAlongHeight; index++) {
     const tr = document.createElement("tr");
