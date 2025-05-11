@@ -3,6 +3,8 @@ const visualization = document.getElementById("visualization");
 const calculation = document.getElementById("calculation");
 const form = document.getElementById("inputForm");
 
+const TABLEWIDTHINVH = 90;
+
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -62,9 +64,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const render = (body) => {
-  const tableWidth = vhToPixel(100);
+  const tableWidth = vhToPixel(TABLEWIDTHINVH);
   visualization.style.width = tableWidth + "px";
-  console.log(tableWidth);
+  const horizontalTileWidth = tableWidth / body.tilesAlongWidth;
+  const scaleTileHeight = body.horizontalTile
+    ? body.tilesAlongWidth / body.tilesAlongHeight
+    : body.tilesAlongHeight / body.tilesAlongWidth;
+  console.log(horizontalTileWidth);
+  console.log(scaleTileHeight);
+
+  for (let index = 0; index < body.tilesAlongWidth; index++) {
+    const tr = document.createElement("tr");
+    for (let i2 = 0; i2 < body.tilesAlongHeight; i2++) {
+      const td = document.createElement("td");
+      td.style.border = "1px solid black";
+      if (body.tilesAlongHeight - index < 1) td.style.border = "1px solid red";
+      if (body.tilesAlongWidth - index < 1)
+        td.style.border = "1px solid orange";
+      td.style.boxSizing = "border-box";
+      console.log(horizontalTileWidth);
+      console.log(horizontalTileWidth * scaleTileHeight);
+
+      td.style.width = horizontalTileWidth;
+      td.style.height = horizontalTileWidth * scaleTileHeight;
+      tr.appendChild(td);
+    }
+    visualization.appendChild(tr);
+  }
 };
 
 const vhToPixel = (vh) => {
