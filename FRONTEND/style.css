@@ -108,7 +108,7 @@ select:hover {
 
 #visualization {
   display: none;
-  width: calc(100vh-20px);
+  width: calc(100vw-20px);
   margin: 10px;
   border: 1px solid black;
   background-color: #e8ffe8;

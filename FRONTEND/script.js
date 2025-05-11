@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const render = (body) => {
-  console.log(body);
+const render = (body) => {};
+
+const vhToPixel = (vh) => {
+  return Math.round(window.innerWidth / 100);
 };
