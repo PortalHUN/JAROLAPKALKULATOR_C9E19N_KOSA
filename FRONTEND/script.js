@@ -61,8 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const render = (body) => {};
+const render = (body) => {
+  const tableWidth = vhToPixel(100);
+  visualization.style.width = tableWidth + "px";
+  console.log(tableWidth);
+};
 
 const vhToPixel = (vh) => {
-  return Math.round(window.innerWidth / 100);
+  return Math.round(window.innerWidth / (100 / vh)) - 20;
 };

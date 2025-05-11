@@ -25,5 +25,12 @@
     public double unusedWidthArea => unusedWidth * roomWidthM2;
     public double unusedHeightArea => unusedHeight * roomHeightM2;
     public double totalUnusedArea => unusedWidthArea + unusedHeightArea;
+
+    //Ratio
+    public double HorizontalTileRatio => tileWidth / tileHeight;
+    public double VerticalTileRatio => tileHeight / tileWidth;
+
+    //Orientation The tile horizontally longer than vertically
+    public bool horizontalTile => tileWidth >= tileHeight;
   }
 }
