@@ -70,23 +70,27 @@ const render = (body) => {
   const scaleTileHeight = body.horizontalTile
     ? body.tilesAlongWidth / body.tilesAlongHeight
     : body.tilesAlongHeight / body.tilesAlongWidth;
+  const calculatedHeight = horizontalTileWidth * scaleTileHeight;
   console.log(horizontalTileWidth);
   console.log(scaleTileHeight);
 
-  for (let index = 0; index < body.tilesAlongWidth; index++) {
+  for (let index = 0; index < body.tilesAlongHeight; index++) {
     const tr = document.createElement("tr");
-    for (let i2 = 0; i2 < body.tilesAlongHeight; i2++) {
+    for (let i2 = 0; i2 < body.tilesAlongWidth; i2++) {
       const td = document.createElement("td");
       td.style.border = "1px solid black";
-      if (body.tilesAlongHeight - index < 1) td.style.border = "1px solid red";
-      if (body.tilesAlongWidth - index < 1)
+      if (body.tilesAlongHeight - index < 1) {
+        td.style.border = "1px solid red";
+      }
+      if (body.tilesAlongWidth - i2 < 1) {
         td.style.border = "1px solid orange";
+      }
       td.style.boxSizing = "border-box";
       console.log(horizontalTileWidth);
-      console.log(horizontalTileWidth * scaleTileHeight);
+      console.log(calculatedHeight);
 
-      td.style.width = horizontalTileWidth;
-      td.style.height = horizontalTileWidth * scaleTileHeight;
+      td.style.width = horizontalTileWidth + "px";
+      td.style.height = calculatedHeight + "px";
       tr.appendChild(td);
     }
     visualization.appendChild(tr);
